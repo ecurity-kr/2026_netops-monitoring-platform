@@ -32,9 +32,13 @@
 
 ## [26-07-15] GNS3 GUI에서 "POST /projects/d19aecf3- .../qemu/nodes/.../start not found" 에러
 
-**증상**: GNS3 캔버스에서 VyOS 노드 Start 진행 불가
-**원인**: ...
-**해결**: ...
+**증상**: GNS3 캔버스에서 VyOS 노드 Start 진행 불가. vyOS 삭제 시 DELETE not found 에러 발생
+
+**원인**: GNS3 VM 재부팅하면서 서버측 프로젝트 및 노드 상태가 초기화 되었으나 GNS3 로컬 프로그램은
+          이전 프로젝트 및 노드 ID를 사용하고 있어 불일치 발생. (404 Not Found 와 유사함)
+          서버가 재시작되면서 GUI와 설정 동기화가 꼬임.
+
+**해결**: GNS3 프로그램을 완전히 종료 후 다시 실행 후 vyOS 노드 Start 재시도
 
 
 ---
