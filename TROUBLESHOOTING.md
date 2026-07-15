@@ -85,7 +85,7 @@
 
 ## [26-07-16] GNS3 GUI 에서 WSL2 서버 (localhost:3080) 연결 실패
 
-**증상**: WSL2에 GNS3 서버를 정상 실행 확인, Windows에 GNS3 GUI에서 localhost:3080 접속 시도 시
+**증상**: WSL2에 GNS3 서버 정상 실행 확인, Windows에 GNS3 GUI에서 localhost:3080 접속 시도 시
           "Cannot connect to the GNS3 server" 에러 발생.
           PowerShell에서 curl http://localhost:3080/v2/version 연결 실패.
 
