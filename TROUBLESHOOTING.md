@@ -83,6 +83,21 @@
 
 ---
 
+## [26-07-16] GNS3 GUI 에서 WSL2 서버 (localhost:3080) 연결 실패
+
+**증상**: WSL2에 GNS3 서버를 정상 실행 확인, Windows에 GNS3 GUI에서 localhost:3080 접속 시도 시
+          "Cannot connect to the GNS3 server" 에러 발생.
+          PowerShell에서 curl http://localhost:3080/v2/version 연결 실패.
+
+**원인**: WSL2의 locaohost 포트 포워딩이 정상 동작하지 않음.
+          WSL2 터미널에서 ip addr show eth0로 WSL2 실제 IP(172.18.137.64) 확인 후,
+          IP 주소로 curl 시도 시 정상 응답(200 OK) 확인.
+
+**해결**: GNS3 GUI의 Main server 설정에서 Host를 localhost 대신 WSL2의 실제 IP 주소로 변경.
+          Windows 재부팅 시 IP 변경될 수 있으므로 확인 필요.
+
+---
+
 ## [YY-MM-DD] 제목
 
 **증상**: ...
