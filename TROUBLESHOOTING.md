@@ -91,7 +91,7 @@
 
 **원인**: WSL2의 locaohost 포트 포워딩이 정상 동작하지 않음.
           WSL2 터미널에서 ip addr show eth0로 WSL2 실제 IP(172.18.137.64) 확인 후,
-          IP 주소로 curl 시도 시 정상 응답(200 OK) 확인.
+          IP 주소로 curl 시도 시 정상 응답(200 OK) 확인
 
 **해결**: GNS3 GUI의 Main server 설정에서 Host를 localhost 대신 WSL2의 실제 IP 주소로 변경.
           Windows 재부팅 시 IP 변경될 수 있으므로 확인 필요.
@@ -114,6 +114,21 @@
           이후 groups 명령어로 kvm 계정 포함된 것 확인, gns3server 재실행하여
           VyOS 노드 정상 부팅 확인 (Stop 후 Start, 부팅 시간 약 5초 후 KVM 가속 정상 작동 확인)
 
+
+---
+
+## [26-07-17] GNS3 노드들이 링크 연결된 상태에서 QEMU Network 어댑터 개수 변경 시도 시 에러
+
+**증상**: VyOS-1 노드의 Adapters 값을 1에서 4로 변경할 때,
+          "Changing the number of adapters while links are connected isn't supported yet!
+          Please delete all the links first." 에러 발생
+
+**원인**: GNS3 노드에 링크(케이블)가 연결된 상태에서는 어댑터 개수 변경을 지원하지 않음.
+          노드 실행 상태(Stop 여부)와 무관하게 연결된 링크 자체를 먼저 삭제 후 진행해야 함.
+
+**해결**: 연결된 링크를 모두 삭제한 뒤 Network Adapters 값을 4로 변경 후 다시 링크 연결.
+          또한 템플릿의 기본 Adapters 값 변경 시 캔버스에 이미 배치된 기존 노드에는
+          적용되지 않아, 노드별로 개별 Configure에서 수동으로 값 변경이 필요함
 
 ---
 
