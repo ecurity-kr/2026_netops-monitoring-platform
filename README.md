@@ -5,7 +5,7 @@ Network monitoring &amp; auto-remediation lab using VyOS, Zabbix, Ansible, and K
 
 
 ## 0. 아키텍처
-<img width="678" height="354" alt="image" src="https://github.com/user-attachments/assets/9abd08ab-8b02-4576-a093-ea0b1abf00cd" />
+![Architecture](images/architecture.png)
 
 ## 0-1. 아키텍처 변경 이력
 
